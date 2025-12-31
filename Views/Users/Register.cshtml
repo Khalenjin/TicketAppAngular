@@ -1,0 +1,39 @@
+@model TicketApp.Models.RegisterViewModel
+
+<h2>Kayıt Ol</h2>
+
+<form asp-action="Register" method="post">
+    <div>
+        <label>Kullanıcı Adı</label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Eposta</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Şifre</label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Şifre Tekrar</label>
+        <input asp-for="ConfirmPassword" type="password" class="form-control" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Kayıt Ol</button>
+
+    <p class="mt-3">
+        Zaten hesabın var mı? <a asp-controller="Users" asp-action="Login">Giriş Yap</a>
+    </p>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

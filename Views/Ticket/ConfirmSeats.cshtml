@@ -1,0 +1,32 @@
+@model TicketApp.Models.SelectSeatViewModel
+
+<h2>Seçtiğiniz Koltuklar</h2>
+
+<p>@Model.PersonCount kişi için aşağıdaki koltukları seçtiniz:</p>
+
+<ul>
+@foreach (var seatId in Model.SelectedSeatIds)
+{
+    var seat = Model.Seats.First(s => s.Id == seatId);
+    char rowLetter = (char)('A' + (seat.RowNumber - 1));
+
+    <li>@rowLetter@seat.SeatNumber</li>
+}
+</ul>
+
+<hr />
+
+<h4>Toplam Ücret: <strong>@Model.TotalPrice TL</strong></h4>
+
+<hr />
+
+<form method="post" asp-action="BuySeats">
+    <input type="hidden" asp-for="TicketId" />
+
+    @for (int i = 0; i < Model.SelectedSeatIds.Count; i++)
+    {
+        <input type="hidden" name="SelectedSeatIds[@i]" value="@Model.SelectedSeatIds[i]" />
+    }
+
+    <button class="btn btn-success mt-3">Satın Al</button>
+</form>

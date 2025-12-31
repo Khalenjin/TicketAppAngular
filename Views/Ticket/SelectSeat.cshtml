@@ -1,0 +1,73 @@
+@model TicketApp.Models.SelectSeatViewModel
+@using TicketApp.Entity
+@using TicketApp.Models
+
+<h2>Koltuk Seçimi (@Model.PersonCount Kişi)</h2>
+
+<style>
+    .selected {
+        background-color: orange !important;
+        color: white;
+    }
+</style>
+
+<form method="post" asp-action="ConfirmSeats">
+    <input type="hidden" asp-for="TicketId" />
+    <input type="hidden" asp-for="PersonCount" />
+    <input type="hidden" asp-for="SelectedSeatIdsString" id="SelectedSeatIds" />
+
+    @{
+        int currentRow = 0;
+    }
+
+    @foreach (var seat in Model.Seats)
+    {
+        if (currentRow != seat.RowNumber)
+        {
+            currentRow = seat.RowNumber;
+            <div class="mt-3">
+                <strong>@((char)('A' + (currentRow - 1)))</strong>
+            </div>
+        }
+
+        if (seat.IsReserved)
+        {
+            <button class="btn btn-danger m-1" disabled>@seat.SeatNumber</button>
+        }
+        else
+        {
+            <button type="button"
+                    id="seat_@seat.Id"
+                    class="btn btn-success m-1"
+                    onclick="toggleSeat(@seat.Id)">
+                @seat.SeatNumber
+            </button>
+        }
+    }
+
+    <button type="submit" class="btn btn-primary mt-3">Onayla</button>
+</form>
+
+<script>
+    let maxCount = @Model.PersonCount;
+    let selected = [];
+
+    function toggleSeat(id) {
+        const btn = document.getElementById("seat_" + id);
+
+        if (selected.includes(id)) {
+            selected = selected.filter(x => x !== id);
+            btn.classList.remove("selected");
+        } 
+        else {
+            if (selected.length >= maxCount) {
+                alert("En fazla " + maxCount + " koltuk seçebilirsiniz.");
+                return;
+            }
+            selected.push(id);
+            btn.classList.add("selected");
+        }
+
+        document.getElementById("SelectedSeatIds").value = selected.join(",");
+    }
+</script>

@@ -1,0 +1,70 @@
+﻿@model TicketApp.Models.TicketFilterViewModel
+
+<h2>Tiyatro Gösterileri</h2>
+
+<!-- TARİH FİLTRE FORMU -->
+<form method="get">
+    <div class="row mb-3">
+        <div class="col">
+            <label>Başlangıç Tarihi</label>
+            <input type="date"
+                   name="startDate"
+                   value="@Model.StartDate?.ToString("yyyy-MM-dd")"
+                   class="form-control" />
+        </div>
+
+        <div class="col">
+            <label>Bitiş Tarihi</label>
+            <input type="date"
+                   name="endDate"
+                   value="@Model.EndDate?.ToString("yyyy-MM-dd")"
+                   class="form-control" />
+        </div>
+
+        <div class="col">
+            <label>&nbsp;</label>
+            <button class="btn btn-primary w-100">Filtrele</button>
+        </div>
+    </div>
+</form>
+
+<hr />
+
+<!-- LİSTELEME -->
+@if (Model.Tickets == null || !Model.Tickets.Any())
+{
+    <p>Bu tarih aralığında gösteri bulunamadı.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Oyun Adı</th>
+                <th>Tarih</th>
+                <th>Fiyat</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var show in Model.Tickets)
+            {
+                <tr>
+                    <td>@show.PlayName</td>
+                    <td>@show.Date.ToString("dd.MM.yyyy")</td>
+                    <td>@show.Price TL</td>
+
+                    <td>
+                        <a asp-controller="Ticket"
+                           asp-action="SelectPerson"
+                           asp-route-ticketId="@show.Id"
+                           class="btn btn-primary">
+                            Bilet Al
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

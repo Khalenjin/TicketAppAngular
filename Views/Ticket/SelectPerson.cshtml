@@ -1,0 +1,32 @@
+@model SelectPersonCountViewModel
+
+<h2>Kaç Kişi?</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="TicketId" />
+
+    <div class="d-flex align-items-center">
+        <button type="button" id="minus" class="btn btn-danger">-</button>
+
+        <input asp-for="PersonCount"
+               class="form-control text-center mx-2"
+               style="width: 80px;"
+               readonly />
+
+        <button type="button" id="plus" class="btn btn-success">+</button>
+    </div>
+
+    <button class="btn btn-primary mt-3" type="submit">Koltuk Seç</button>
+</form>
+
+<script>
+    const input = document.querySelector('[name="PersonCount"]');
+    document.getElementById("minus").onclick = () => {
+        let val = parseInt(input.value);
+        if(val > 1) input.value = val - 1;
+    };
+    document.getElementById("plus").onclick = () => {
+        let val = parseInt(input.value);
+        if(val < 10) input.value = val + 1;
+    };
+</script>

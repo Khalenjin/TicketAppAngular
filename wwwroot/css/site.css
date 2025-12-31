@@ -1,0 +1,47 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+/* Profil butonu */
+.btn-profile {
+    color: white !important;
+    border: 1px solid rgba(255,255,255,0.5);
+    background-color: transparent;
+}
+
+.btn-profile:hover {
+    color: white !important;
+    background-color: rgba(255,255,255,0.2);
+    border-color: white;
+}
+
+/* Çıkış butonu */
+.btn-logout {
+    color: white !important;
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+.btn-logout:hover {
+    color: white !important;
+    background-color: #bb2d3b;
+    border-color: #bb2d3b;
+}
