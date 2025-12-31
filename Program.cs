@@ -3,8 +3,16 @@ using TicketApp.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using TicketApp.Data.Abstract;
 using TicketApp.Data.Concrete.EfCore;
+using Microsoft.OpenApi;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args); // ✅ Bu en başta olacak!
+
+// Swagger (API test ekranı için)
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ticket API", Version = "v1" });
+});
 
 // Controllers + Razor Views
 builder.Services.AddControllersWithViews();
@@ -24,10 +32,9 @@ builder.Services.AddScoped<ITicketPurchaseRepository, EfCoreTicketPurchaseReposi
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = "/Users/Login"; // Razor için
+        options.LoginPath = "/Users/Login";
         options.Events.OnRedirectToLogin = context =>
         {
-            // API çağrılarında redirect yerine 401 dön
             if (context.Request.Path.StartsWithSegments("/api"))
             {
                 context.Response.StatusCode = 401;
@@ -41,7 +48,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 builder.Services.AddAuthorization();
 
-// CORS: Angular localhost için
+// CORS: Angular için
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngular", policy =>
@@ -55,30 +62,35 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Static files (Angular dist olabilir)
+// Static files
 app.UseStaticFiles();
 
-// CORS yukarıda tanımlanan politika
-app.UseCors("AllowAngular");
+// Swagger (test sayfası için)
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ticket API v1");
+});
 
-// Routing + Auth
+// Middleware
+app.UseCors("AllowAngular");
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Controllers: Hem API hem Razor
+// API ve Razor Controller Mapping
 app.MapControllers();
 
-// Razor default (MVC)
+// Razor için route
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Users}/{action=Login}/{id?}"
 );
 
-// Angular fallback
+// Angular fallback (index.html)
 app.MapFallbackToFile("index.html");
 
-// DB Seed (varsa)
+// DB seed
 SeedData.SeedDatabase(app);
 
 app.Run();
