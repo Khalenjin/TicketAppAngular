@@ -37,7 +37,8 @@ namespace TicketApp.Controllers.Api
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.UserName ?? "")
+                new Claim(ClaimTypes.Name, user.UserName ?? ""),
+                new Claim(ClaimTypes.Role, user.Role ?? "User") // ✅ EKLENDİ (ROLE CLAIM)
             };
 
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -49,7 +50,8 @@ namespace TicketApp.Controllers.Api
             {
                 id = user.Id,
                 userName = user.UserName,
-                email = user.Email
+                email = user.Email,
+                role = user.Role // ✅ EKLENDİ (frontend admin kontrol için)
             });
         }
 
@@ -69,12 +71,12 @@ namespace TicketApp.Controllers.Api
             {
                 UserName = req.UserName,
                 Email = req.Email,
-                Password = req.Password
+                Password = req.Password,
+                Role = "User" // ✅ EKLENDİ: default role
             };
 
             await _users.CreateUser(user);
 
-            // İstersen direkt login de yapabiliriz; şimdilik OK dönelim.
             return Ok(new { message = "Kayıt başarılı." });
         }
 
@@ -93,8 +95,9 @@ namespace TicketApp.Controllers.Api
 
             return Ok(new
             {
-                userId = User.FindFirstValue(ClaimTypes.NameIdentifier),
-                userName = User.Identity?.Name
+                id = User.FindFirstValue(ClaimTypes.NameIdentifier), // ✅ SENİN ARADIĞIN KODUN YERİ BURASI
+                userName = User.Identity?.Name,
+                role = User.FindFirstValue(ClaimTypes.Role) ?? "User" // ✅ EKLENDİ
             });
         }
     }

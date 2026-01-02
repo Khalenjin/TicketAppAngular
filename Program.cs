@@ -5,7 +5,7 @@ using TicketApp.Data.Abstract;
 using TicketApp.Data.Concrete.EfCore;
 using Microsoft.OpenApi;
 
-var builder = WebApplication.CreateBuilder(args); // ✅ Bu en başta olacak!
+var builder = WebApplication.CreateBuilder(args);
 
 // Swagger (API test ekranı için)
 builder.Services.AddEndpointsApiExplorer();
@@ -20,7 +20,7 @@ builder.Services.AddControllersWithViews();
 // EF Core SQLite
 builder.Services.AddDbContext<TicketContext>(options =>
 {
-    options.UseSqlite(builder.Configuration["ConnectionStrings:Sql_connection"]);
+    options.UseSqlite(builder.Configuration.GetConnectionString("Sql_connection"));
 });
 
 // Repositories
@@ -33,6 +33,12 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     .AddCookie(options =>
     {
         options.LoginPath = "/Users/Login";
+
+        // ✅ EKLENDİ: Angular cookie için
+        options.Cookie.HttpOnly = true;
+        options.Cookie.SameSite = SameSiteMode.None;
+        options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+
         options.Events.OnRedirectToLogin = context =>
         {
             if (context.Request.Path.StartsWithSegments("/api"))
