@@ -5,8 +5,6 @@ C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\TicketApp.Assembly
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\TicketApp.csproj.CoreCompileInputs.cache
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\TicketApp.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\TicketApp.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\TicketApp.RazorAssemblyInfo.cache
-C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\TicketApp.RazorAssemblyInfo.cs
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\TicketApp.sourcelink.json
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\bin\Debug\net8.0\appsettings.json
@@ -137,12 +135,14 @@ C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\staticwebassets\ms
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.TicketApp.props
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.TicketApp.props
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\scopedcss\bundle\TicketApp.styles.css
-C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\scopedcss\projectbundle\TicketApp.bundle.scp.css
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\TicketApp.csproj.CopyComplete
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\TicketApp.dll
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\refint\TicketApp.dll
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\TicketApp.pdb
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\TicketApp.genruntimeconfig.cache
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\ref\TicketApp.dll
+C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\TicketApp.RazorAssemblyInfo.cache
+C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\TicketApp.RazorAssemblyInfo.cs
+C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\scopedcss\projectbundle\TicketApp.bundle.scp.css
