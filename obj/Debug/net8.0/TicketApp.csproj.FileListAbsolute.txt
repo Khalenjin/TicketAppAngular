@@ -9,13 +9,6 @@ C:\Users\sena_\OneDrive\Masaüstü\TicketApp\obj\Debug\net8.0\TicketApp.sourceli
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\bin\Debug\net8.0\appsettings.json
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\bin\Debug\net8.0\package-lock.json
-C:\Users\sena_\OneDrive\Masaüstü\TicketApp\bin\Debug\net8.0\ticket-ui\angular.json
-C:\Users\sena_\OneDrive\Masaüstü\TicketApp\bin\Debug\net8.0\ticket-ui\package-lock.json
-C:\Users\sena_\OneDrive\Masaüstü\TicketApp\bin\Debug\net8.0\ticket-ui\package.json
-C:\Users\sena_\OneDrive\Masaüstü\TicketApp\bin\Debug\net8.0\ticket-ui\proxy.conf.json
-C:\Users\sena_\OneDrive\Masaüstü\TicketApp\bin\Debug\net8.0\ticket-ui\tsconfig.app.json
-C:\Users\sena_\OneDrive\Masaüstü\TicketApp\bin\Debug\net8.0\ticket-ui\tsconfig.json
-C:\Users\sena_\OneDrive\Masaüstü\TicketApp\bin\Debug\net8.0\ticket-ui\tsconfig.spec.json
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\bin\Debug\net8.0\TicketApp.staticwebassets.runtime.json
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\bin\Debug\net8.0\TicketApp.exe
 C:\Users\sena_\OneDrive\Masaüstü\TicketApp\bin\Debug\net8.0\TicketApp.deps.json

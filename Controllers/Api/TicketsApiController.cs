@@ -19,19 +19,33 @@ namespace TicketApp.Controllers.Api
         }
 
         [HttpGet("/api/shows")]
-        public IActionResult GetShows()
-        {
-            var shows = _ticketRepository.Tickets.Select(t => new
-            {
-                id = t.Id,
-                title = t.PlayName,
-                description = $"Salon: {t.Hall!.Name}",
-                date = t.Date,
-                imageUrl = "/images/default.jpg"
-            }).ToList();
+public IActionResult GetShows([FromQuery] DateTime? startDate, [FromQuery] DateTime? endDate)
+{
+    var query = _ticketRepository.Tickets.Include(t => t.Hall).AsQueryable();
 
-            return Ok(shows);
-        }
+    // Başlangıç tarihi varsa, o tarihten SONRAKİLERİ getir
+    if (startDate.HasValue)
+    {
+        query = query.Where(t => t.Date.Date >= startDate.Value.Date);
+    }
+
+    // Bitiş tarihi varsa, o tarihten ÖNCEKİLERİ (ve o gün dahil) getir
+    if (endDate.HasValue)
+    {
+        query = query.Where(t => t.Date.Date <= endDate.Value.Date);
+    }
+
+    var shows = query.Select(t => new
+    {
+        id = t.Id,
+        title = t.PlayName,
+        description = $"Salon: {t.Hall!.Name}",
+        date = t.Date,
+        imageUrl = "/images/default.jpg"
+    }).ToList();
+
+    return Ok(shows);
+}
 
         // 🔥 DÜZGÜN YERE ALINDI:
         [HttpGet("{ticketId}/seats")]
